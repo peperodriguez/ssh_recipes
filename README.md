@@ -3,7 +3,8 @@ SSH Recipes, tips and tricks
 
 ## Tunneling
 
-Port forwarding : you want that a connection to <local_host>:<port_0> is directed to <server_2>:<port_1> through an ssh tunnel established on <server_ssh>:
+### Port forwarding
+You want that a connection to <local_host>:<port_0> is directed to <server_2>:<port_1> through an ssh tunnel established on <server_ssh>:
 
     $ ssh -L <port_0>:<server_2>:<port_1> <user>@<server_ssh>
 
@@ -13,4 +14,6 @@ For example, you want to establish an Windows RDP (Remote DesktoP) connection to
 
     $ ssh -L 13389:<win_server>:3389 <user>@<linux_server>
     
-NOTES : 3389 is the standard Windows RDP port. You use 13389 in your machine, hoping it is not used for anything else :-)
+NOTES : `3389` is the standard Windows RDP port. You use `13389` in your machine, hoping it is not used for anything else :-).
+
+### Relaying connections (`ProxyCommand`)
