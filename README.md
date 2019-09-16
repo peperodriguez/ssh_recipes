@@ -17,3 +17,30 @@ For example, you want to establish an Windows RDP (Remote DesktoP) connection to
 NOTES : `3389` is the standard Windows RDP port. You use `13389` in your machine, hoping it is not used for anything else :-).
 
 ### Relaying connections (`ProxyCommand`)
+
+Edit/Create `~/.ssh/config/` and add:
+
+```
+Host <target_alias>
+    Hostname <target>
+    ProxyCommand ssh -W %h:%p <usr_at_hop_0>@<hop_0>
+    User <user_at_target>
+```
+
+Then, `ssh <target_alias>` will reach `<target>` through an ssh-tunnel in `<hop_0>`.
+
+#### Chaining connections
+
+```
+Host <hop_1_alias>
+    Hostname <hop_1>
+    ProxyCommand ssh -W %h:%p <usr_at_hop_0>@<hop_0>
+    User <user_at_hop_1>
+    
+Host <target_alias>
+    Hostname <target>
+    ProxyCommand ssh -W %h:%p <hop_1_alias>
+    User <user_at_target>
+```
+
+Then, `ssh <target_alias>` will reach `<target>` through an ssh-tunnel 1st in `<hop_0>` and then in `<hop_1>`.
