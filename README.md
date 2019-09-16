@@ -9,7 +9,7 @@ Port forwarding : you want that a connection to <local_host>:<port_0> is directe
 
 If this goes Ok, then all your traffic routed to localhost:<port_0> is ssh-tunnel'd to <server_2>:<port_1>.
 
-For example, you want to establish an Windows RDP (Remote DesktoP) to a <win_server> only accesible from an ssh-enabled <linux_server>:
+For example, you want to establish an Windows RDP (Remote DesktoP) connection to a Windows machine named <win_server> which is only accesible from an ssh-enabled <linux_server>:
 
     $ ssh -L 13389:<win_server>:3389 <user>@<linux_server>
     
