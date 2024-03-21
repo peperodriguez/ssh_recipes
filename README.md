@@ -1,6 +1,6 @@
 # ssh_recipes
 SSH Recipes, tips and tricks
-For example [chaining](#Chainingconnections)
+For example [chaining](#Chaining)
 ## Tunneling
 
 ### Port forwarding
